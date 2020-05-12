@@ -1,0 +1,88 @@
+<td *ngIf="displayParams; then paramView"></td>
+<td *ngIf="editDoc; then editDocView"></td>
+
+<ng-template #paramView>
+    <app-add-params class="paramView">
+    </app-add-params>
+</ng-template>
+
+<ng-template #editDocView>
+    <app-edit-doc class="editDoc">
+    </app-edit-doc>
+</ng-template>
+
+<div class="head-documentModal">
+    Generate Document<span class="close" (click)="closeModal()">&times;</span>
+</div>
+<div class="big-container">
+    <div class="pdf-container">
+        <object class="side-view">
+            <pdf-viewer [src]="dataSource" [render-text]="true" [original-size]="false" [autoresize]="true">
+            </pdf-viewer>
+        </object>
+    </div>
+    <div class="params-container">
+        <div>
+            <div class="head-text">Templates</div>
+            <select id="templates" class="dropDown" [(ngModel)]="selectedType" (change)="updateView()">
+                <option *ngFor="let type of docTypes" [ngValue]="type">{{type.name}}
+                </option>
+            </select>
+
+            <a class="button" (click)="showNewDocView()">New Template</a>
+            <a class="button" (click)="showEditDocView()">Edit Structure</a>
+        </div>
+
+        <hr class="hrStyle">
+
+        <div>
+            <p class="doc-property">Title Font: <input id="titleInput" class="input-property"
+                    [(ngModel)]="currentTemplate.titleFontSize" type="text" (blur)="reload()">
+            </p>
+            <p class="doc-property">Text Font: <input id="titleInput" class="input-property"
+                    [(ngModel)]="currentTemplate.textFontSize" type="text" (blur)="reload()">
+            </p>
+            <p class="doc-property">Line Spacing: <input id="spacingInput" class="input-property"
+                    [(ngModel)]="currentTemplate.lineSpacing" type="text" (blur)="reload()">
+            </p>
+
+        </div>
+
+        <hr class="hrStyle">
+
+        <div>
+            <!-- <a class="doc-property" class="button" (click)="reload()">Reload</a> -->
+            <a class="button" (click)="showParamView()">Add Params</a>
+            <p class="doc-property">Item:
+                <input id="textBox" class="input-property text-box" type="text" [(ngModel)]="inventoryNr"
+                    [readonly]="hasItem">
+                <a *ngIf="hasItem; then lockedItem else emptyItem"></a>
+            </p>
+        </div>
+
+        <hr class="hrStyle">
+
+        <div>
+            <div *ngIf="saveDoc; then saveDialog else saveButton"></div>
+            <a class="button" (click)="download()">Download</a>
+        </div>
+    </div>
+</div>
+
+<ng-template #saveDialog>
+    <input class="save-dialog" type="text" [(ngModel)]="draftName">
+    <a class="button" (click)="saveTemplate()">Save</a>
+    <a class="button" (click)="cancelSave()">Cancel</a>
+</ng-template>
+
+<ng-template #saveButton>
+    <a class="button" (click)="showSaveDialog()">Save Template</a>
+</ng-template>
+
+<ng-template #lockedItem>
+    <a class="button" style="background-color: red; margin-top: -4px; width: 60px;" (click)="editItemBox()">Detach</a>
+</ng-template>
+
+<ng-template #emptyItem>
+    <a class="button" style="margin-top: -4px;" (click)="lockItemBox()">Lock</a>
+</ng-template>

@@ -1,0 +1,65 @@
+.bar-chart{
+    height: 370px;
+    width: 90%;
+    margin-top:3%;
+    margin-bottom: 5%;
+}
+
+.chart{
+    width: 50%;
+    height: 50%;
+    display: inline-block;
+    vertical-align: top;
+    
+}
+.div-table{
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+    height: 50%;
+}
+
+thead,
+tbody,
+tr {
+    display: contents;
+    
+}
+
+table{
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    border-collapse: collapse;
+    min-width: 100%;
+    grid-template-columns: 
+    minmax(21.5%, 1.67fr) 
+    minmax(17.5%, 1.67fr) 
+    minmax(25.5%, 2.67fr) 
+    minmax(24.5%, 11.67fr) 
+    minmax(18.5%, 11.67fr)
+}
+th {
+    max-width: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    top: 0;
+    background: #23d160;
+    text-align: left;
+    font-weight: normal;
+    color: white;
+    padding: 7px;
+}
+td{
+    max-width: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 7px;
+}
+
+th:last-child {
+    border: 0;
+}

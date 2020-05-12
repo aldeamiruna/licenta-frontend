@@ -1,0 +1,14 @@
+<td *ngIf="edit; then editText else plainText"></td>
+
+<ng-template #editText>
+    <input class="element" placeholder="field.text" type="text" [(ngModel)]="field.text"><a class="button" (click)="save()">Save</a>
+    
+    <a class="button remove-button" (click)="remove()">Remove</a>
+</ng-template>
+
+<ng-template #plainText>
+    <p class="element">{{field.text}}
+        <a class="button" (click)="showEdit()">Edit</a>
+    </p>    
+</ng-template>
+

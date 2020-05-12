@@ -1,0 +1,33 @@
+<div class="head-historyModal">
+    Item Details<span class="close" (click)="closeHistory()">&times;</span>
+</div>
+<div class="body-historyModal">
+    <div *ngIf="item" class="itemDetails">
+        <p>Owner : &nbsp;{{item.user.firstName + " " + item.user.lastName}}</p>
+        <p *ngIf="item.itemType">Item Type : &nbsp;{{item.itemType.type}}</p>
+        <p *ngIf="item.producer">Producer : &nbsp;{{item.producer}}</p>
+        <p *ngIf="item.model">Model : &nbsp;{{item.model}}</p>
+        <p *ngIf="item.serialId">Serial Id : &nbsp;{{item.serialId}}</p>
+    </div>
+    <div class="historyTable">
+        <table>
+            <thead>
+                <th>State</th>
+                <th>Comment</th>
+                <th>Date</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let h of history">
+                    <td *ngIf="h">{{h.state.type}}</td>
+                    <td *ngIf="h" class="comment" (mouseenter)="itemRow.mouseCoordinates($event,h.comment)">
+                        {{h.comment}}
+                        <div *ngIf="h.comment && h.comment.length >=9" class="comment-container"
+                            [ngStyle]="itemRow.commentContainerLocation()">{{h.comment}}
+                        </div>
+                    </td>
+                    <td style="width: 38%;" *ngIf="h">{{h.date | date}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+.example-card {
+    max-width: 400px;
+    display: inline-block;
+    margin-left: 20px;
+  }
+  
+  .example-header-image {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Dell_logo_2016.svg/1200px-Dell_logo_2016.svg.png');
+    background-size: cover;
+  }
+
+  .example-header-image2 {
+    background-image: url('https://qph.fs.quoracdn.net/main-qimg-ef55173fc9b0debf0b9293da4cbc8997');
+    background-size: cover;
+  }
+ 
+  /* .example-header-image3 {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Dell_logo_2016.svg/1200px-Dell_logo_2016.svg.png');
+    background-size: cover;
+    height: 10%;
+  } */
+
+.category-hr{
+    background-color: blue;
+}
+
+.category-title{
+  margin: 20px;
+  font-size: x-large;
+}

@@ -1,0 +1,27 @@
+<div class="head-detailsModal">
+    Details<span class="close" (click)="closeDetailsModal()">&times;</span>
+</div>
+<div class="body-detailsModal">
+    <div *ngIf="room" class="roomDetails">
+        <p *ngIf="room.name">Room Name : &nbsp;{{room.name}}</p>
+        <p *ngIf="room.floor">Floor : &nbsp;{{room.floor}}</p>
+    </div>
+    <div class="itemTable">
+        <table>
+            <thead>
+                <th>Inventory no.</th>
+                <th>Type</th>
+                <th>Producer</th>
+                <th>Model</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of items">
+                    <td *ngIf="item">{{item.inventoryNumber}}</td>
+                    <td *ngIf="item">{{item.itemType.type}}</td>
+                    <td *ngIf="item">{{item.producer}}</td>
+                    <td *ngIf="item">{{item.model}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

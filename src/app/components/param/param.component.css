@@ -1,0 +1,12 @@
+.input-property{
+    display: inline-block;
+    height: 20px;
+    width: 40px;
+}
+
+.doc-property{
+    margin-top: 2px;
+    text-align: left;
+    margin-top: 5px;
+    font-size: 10px;
+}

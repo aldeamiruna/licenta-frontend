@@ -1,0 +1,129 @@
+.dropDown {
+    display: table;
+    width: 80px;
+}
+.form-control {
+    display: table;
+    width: 80px;
+}
+.button {
+    margin-left: 1%;
+}
+
+.resetButton{
+    margin-top: 9%;
+    font-size: 14px;
+    background-color: #fff;
+    border-color: #dbdbdb;
+    border-radius: 5px;
+    border:0;
+    color: #363636;
+    cursor: pointer;
+    justify-content: center;
+    padding-bottom: calc(.375em - 1px);
+    padding-left: .75em;
+    padding-right: .75em;
+    padding-top: calc(.375em - 1px);
+    text-align: center;
+    white-space: nowrap;
+}
+
+
+.modalContent {
+    /* opacity:0.8; */
+    background-color:rgba(37, 37, 37,0.5);
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0px;
+    left:0px;
+    z-index:1;
+}
+
+/* Modal Content */
+.modalAddItem{
+    background-color: #fefefe;
+    margin: auto;
+    width: 50%;
+    margin-top: 4%;
+    height:auto;
+    max-height: 90%;
+    overflow: auto;
+}
+
+
+table {
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    display: grid;
+    border-collapse: collapse;
+    min-width: 100%;
+    grid-template-columns: 
+    
+    minmax(3.0%, 1.67fr)
+    minmax(8.5%, 1.67fr) 
+    minmax(8.5%, 1.67fr) 
+    minmax(8.5%, 1.67fr) 
+    minmax(11.5%, 2.67fr) 
+    minmax(10.5%, 1.67fr) 
+    minmax(13%, 1.67fr) 
+    minmax(8.5%, 22.67fr) 
+    minmax(10.5%, 1.67fr) 
+    minmax(7%, 33.67fr);
+}
+
+.tableScroll{
+    height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+thead,
+tbody,
+tr {
+    display: contents;
+}
+
+th {
+    padding: 7px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    position: sticky;
+    top: 0;
+    background: rgb(110, 186, 236);
+    text-align: left;
+    font-weight: normal;
+    font-size: 1.1rem;
+    color: white;
+}
+
+th:last-child {
+    border: 0;
+}
+
+
+.arrows-th{
+    width: 100%;
+    height: auto;
+    margin-top: 100%;
+    cursor: pointer;
+}
+
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.inventoryButtons{
+    text-align:right; 
+    width:100%; 
+    padding:1%;
+}

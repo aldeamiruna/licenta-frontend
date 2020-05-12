@@ -1,0 +1,5 @@
+<p class="doc-property">{{field.text}}</p>
+<div style="display: inline; margin-left: 5px;" *ngFor="let param of field.params; index as i" >
+    <input style="height: 20px; width: 40px;" 
+           type="text" [(ngModel)]="inputText[i]" (change)="update(i)" /> 
+</div>

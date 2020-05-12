@@ -1,0 +1,39 @@
+<!-- <p>user-row works!</p> -->
+<td *ngIf="user">{{user.companyId}}</td>
+<td *ngIf="user">{{user.firstName}}</td>
+<td *ngIf="user">{{user.lastName}}</td> 
+<td *ngIf="user">{{user.email}}</td>
+
+<td *ngIf="!editUser; then showText else showDropBox "></td>
+
+
+<ng-template #showText>
+    <td>{{user.status.type}}</td>
+</ng-template>
+
+<ng-template #showDropBox>
+    <ng-template #showText>
+        <td>{{user.status.type}}</td>
+    </ng-template>
+    <ng-template #showDropBox>
+        <td>
+            <select required id="selectCss" class="dropDown" [(ngModel)]=selectedStatus name="selectedStatus">
+                <option *ngFor="let state of stateList" [ngValue]="state">{{state.type}}</option>
+            </select>
+
+        </td>
+    </ng-template>
+
+    <td>
+        <select required id="selectCss" class="dropDown" [(ngModel)]=selectedStatus name="selectedStatus">
+            <option *ngFor="let state of stateList" [ngValue]="state">{{state.type}}</option>
+        </select>
+
+    </td>
+</ng-template>
+
+<td>
+    <button id="myButton" class="button-position" (click)="editClick()" type="button"
+        value="Edit">{{editButton}}</button>
+    <button class="button-position" (click)="cancelClick()" *ngIf="cancelStatus">Cancel</button>
+</td>

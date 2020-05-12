@@ -1,0 +1,98 @@
+td {
+    color: #808080;
+    padding: 7px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#selectCss {
+    width: 80px;
+}
+
+.button-position {
+    margin-top: 7px;
+    margin-left: 10px;
+    border-style: solid;
+    background-color: rgb(110, 186, 236);
+    border-radius: 25px;
+    cursor: pointer;
+}
+.button-position:focus{
+    outline: 0;
+    box-shadow: 0 0 0 1px rgb(0, 162, 255);
+}
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    min-width: 300px;
+}
+
+.modalContent {
+    /* opacity:0.8; */
+    background-color:rgba(37, 37, 37,0.5);
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0px;
+    left:0px;
+    z-index:1;
+}
+
+  .modalHistoryItem {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    overflow: auto; /* Enable scroll if needed */
+    width: 50%;
+    height: 55%;
+    padding: 3px;
+    background-color: rgba(255, 255, 255, 1);
+    border: 2px solid #888;
+    margin-top: -10px;
+}
+
+
+/* Modal Content */
+
+.modalHistory {
+    background-color: #fefefe;
+    margin: auto;
+    width: 60%;
+    height: auto;
+    margin-top: 5%;
+    overflow: auto;
+    max-height: 70%;
+}
+
+.userInput{
+    width:90%;
+}
+ 
+.commentInput{
+    width:90%;
+}
+
+.comment-container{
+    display:none;
+    overflow: hidden;
+}
+
+.comment:hover .comment-container{ 
+    padding: 10px;
+    height: auto;
+    max-height: 20%;
+    width: auto;
+    max-width: 20%;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    display:block;
+    position:fixed;
+    z-index: 1;
+    overflow:auto;
+    border: 1.5px solid #008cff;
+    word-break:break-all;
+    white-space: normal;
+    cursor: default;
+}

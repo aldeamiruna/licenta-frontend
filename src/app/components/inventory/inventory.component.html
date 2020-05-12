@@ -1,0 +1,121 @@
+<div class="modalContent" *ngIf="display">
+    <!-- Modal content -->
+    <div class="modalAddItem">
+        <app-add-item>
+        </app-add-item>
+    </div>
+</div>
+
+<div class="inventoryButtons">
+    <button class="button" (click)="openAddItem()">Add Item</button>
+    <!-- <button class="button" (click)="showDocView()">Documents</button> -->
+</div>
+
+<div class="tableScroll">
+    <table>
+        <thead>
+            <!--placeholder for magnifier logo -->
+            <th *ngIf="switcher; then arrowDown else arrowUp"></th>
+            <th>Item type
+                <div class="form-group">
+                    <label for="Item Type" class="form-label"></label>
+                    <input type="text" class="form-control" list="typeList" [(ngModel)]="selectedType"
+                        placeholder="Item Type" (keyup)="filterItem()" autocomplete="off">
+                    <datalist id="typeList">
+                        <option selected="selected" [ngValue]="None"></option>
+                        <option *ngFor="let itemType of typeList" [value]="itemType.type"></option>
+                    </datalist>
+                </div>
+            </th>
+            <th>Producer
+                <div class="form-group">
+                    <label for="Producer" class="form-label"></label>
+                    <input type="text" class="form-control" list="producerList" [(ngModel)]="selectedProducer"
+                        placeholder="Producer" (keyup)="filterItem()" autocomplete="off">
+                    <datalist id="producerList">
+                        <option selected="selected" [ngValue]="None"></option>
+                        <option *ngFor="let producer of producerList" [value]="producer"></option>
+                    </datalist>
+                </div>
+            </th>
+            <th>Model
+                <div class="form-group">
+                    <label for="Model" class="form-label"></label>
+                    <input type="text" class="form-control" list="modelList" [(ngModel)]="selectedModel"
+                        placeholder="Model" (keyup)="filterItem()" autocomplete="off">
+                    <datalist id="modelList">
+                        <option selected="selected" [ngValue]="None"></option>
+                        <option *ngFor="let model of modelList" [value]="model">
+                    </datalist>
+                </div>
+            </th>
+            <th>Inventory No.
+                <div class="form-group">
+                    <label for="InventoryNo" class="form-label"></label>
+                    <input type="number" min=0 class="form-control" list="inventoryNumberList"
+                        [(ngModel)]="selectedInventoryNumber" (focus)="filterItem()" (keyup)="filterItem()"
+                        placeholder="Inventory nr." autocomplete="off">
+                    <datalist id="inventoryNumberList">
+                        <option *ngFor="let inventoryNumber of inventoryNumberList" [value]="inventoryNumber">
+                    </datalist>
+                </div>
+            </th>
+            <th>Room
+                <div class="form-group">
+                    <label for="Room" class="form-label"></label>
+                    <input type="text" class="form-control" list="roomList" [(ngModel)]="selectedRoom"
+                        placeholder="Room" (keyup)="filterItem()" autocomplete="off">
+                    <datalist id="roomList">
+                        <option selected="selected" [ngValue]="None"></option>
+                        <option *ngFor="let room of roomList" [value]="room.name">
+                    </datalist>
+                </div>
+            </th>
+            <th>User
+                <div class="form-group">
+                    <label for="Company ID" class="form-label"></label>
+                    <input type="text" class="form-control" list="userList" [(ngModel)]="selectedUser"
+                        placeholder="Company ID" (keyup)="filterItem()" autocomplete="off">
+                    <datalist id="userList">
+                        <option selected="selected" [ngValue]="None"></option>
+                        <option *ngFor="let user of userList"
+                            [value]="[user.firstName, user.lastName, '(',user.companyId,')'].join(' ')">
+                    </datalist>
+                </div>
+            </th>
+            <th>Comment</th>
+            <th>Status
+                <div class="form-group">
+                    <label for="Status" class="form-label"></label>
+                    <input type="text" class="form-control" list="stateList" [(ngModel)]="selectedState"
+                        placeholder="Status" (keyup)="filterItem()" autocomplete="off">
+                    <datalist id="stateList">
+                        <option selected="selected" [ngValue]="None"></option>
+                        <option *ngFor="let state of stateList" [value]="state.type">
+                    </datalist>
+                </div>
+            </th>
+            <th>
+                <button class="resetButton" (click)="resetFilters()">Reset Filters</button>
+            </th>
+        <tbody>
+
+            <ng-container *ngFor="let item of items">
+                <tr app-item-row [item]="item"></tr>
+            </ng-container>
+
+        </tbody>
+    </table>
+</div>
+
+<ng-template #arrowUp>
+    <th>
+        <img src="../../../assets/images/sort-asc.png" class="arrows-th" (click)="onClickOrder()" />
+    </th>
+</ng-template>
+
+<ng-template #arrowDown>
+    <th>
+        <img src="../../../assets/images/sort-desc.png" class="arrows-th" (click)="onClickOrder()" />
+    </th>
+</ng-template>

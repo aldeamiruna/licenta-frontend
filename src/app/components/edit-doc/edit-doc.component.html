@@ -1,0 +1,22 @@
+<div class="custom-background">
+    <a>
+        <span class="close" (click)="closeModal()">&times;</span>
+    </a>
+    <div class="main-view">
+        <ng-template #editTitle>
+            <input class="title" type="text" [(ngModel)]="base.title"><a class="button title-button small-button" (click)="saveTitle()">Save</a>
+        </ng-template>
+                
+        <ng-template #plainTitle>
+            <p style="width: 80%; height: 30px; font-size: 25px;">{{base.title}}<a class="button title-button big-button" (click)="showTitleEdit()">Edit</a></p>
+        </ng-template>
+        <p *ngIf="allowTitleEdit; then editTitle else plainTitle"></p>
+        <app-editable-text class="subtitle-input" [field]="base.subtitle"></app-editable-text>
+        <div style="margin-top: 20px;">
+            <app-editable-text class="field-input" *ngFor="let field of base.fields" [field]="field">
+            </app-editable-text>
+            <a class="button big-button" style="float: left; margin-left: 0px;" (click)="newField()">+</a>
+            <a class="button big-button" style="font-size: 15px;" (click)="save()">Done</a>
+        </div>
+    </div>
+</div>

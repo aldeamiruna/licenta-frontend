@@ -1,0 +1,15 @@
+<div class="modalContent" *ngIf="showMore">
+    <!-- Modal content -->
+    <div class="modalDetails">
+        <app-room-details></app-room-details>     
+    </div>
+</div>
+
+<td *ngIf="room">{{room.name}}</td> 
+<td *ngIf="room">{{room.capacity}}</td>
+<td *ngIf="room">{{room.floor}}</td> 
+
+<td>
+    <button id="myButton1" class="details-button-position" (click)="showDetails()" type="button"
+        value="Edit">Details</button>
+</td>

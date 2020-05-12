@@ -1,0 +1,41 @@
+<div class="head-addUserModal">
+  Add Item<span class="close" (click)="closeAddUser()">&times;</span>
+</div>
+<div class="body-addUserModal">
+  <div class="add-user-error" [ngStyle]="{'display':errorDisplay}">
+    Please insert all required fields!
+  </div>
+  <div class="duplicate-companyID-error" *ngIf="isDuplicate" [ngStyle]="{'display':errorDisplay}">
+    Duplicate company ID!
+  </div>
+  <div class="form-group">
+    <label for="LastName" class="form-label"><b style="color: red">*</b> Last Name</label>
+    <input type="text" class="form-control" [(ngModel)]="selectedLastName" placeholder="Last name" autocomplete="off"
+      [(ngStyle)]="errorLastName">
+  </div>
+  <div class="form-group">
+    <label for="FirstName" class="form-label"><b style="color: red">*</b> First Name</label>
+    <input type="text" class="form-control" [(ngModel)]="selectedFirstName" placeholder="First name" autocomplete="off"
+      [(ngStyle)]="errorFirstName">
+  </div>
+  <div class="form-group">
+    <label for="Email" class="form-label"><b style="color: red">*</b> Email </label>
+    <input type="text" class="form-control" [(ngModel)]="selectedEmail" placeholder="Email" autocomplete="off"
+      [(ngStyle)]="errorEmail">
+  </div>
+  <div class="form-group">
+    <label for="CompanyId" class="form-label"><b style="color: red">*</b>Company Id</label>
+    <input type="text" class="form-control" [(ngModel)]="selectedCompanyId" placeholder="CompanyID" autocomplete="off"
+      [(ngStyle)]="errorCompanyID">
+  </div>
+  <div class="form-group">
+    <label for="Status" class="form-label"><b style="color: red">*</b> Status</label>
+    <input type="text" class="form-control" list="stateList" [(ngModel)]="selectedStatus" placeholder="Status"
+      autocomplete="off" [(ngStyle)]="errorStatus">
+    <datalist id="stateList">
+      <option *ngFor="let state of stateList" [value]="state.type">
+    </datalist>
+  </div>
+  <button type="button" class="form-button" (click)="onClickAddUser()"><i
+      class="glyphicon glyphicon-plus"></i>&nbsp;Save</button>
+</div>

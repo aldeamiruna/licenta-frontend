@@ -1,0 +1,20 @@
+<div class="tableScroll">
+    <table>
+        <thead>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Company ID</th>
+            <th>Producer</th>
+            <th>Model</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of items">
+                <td>{{item.user.firstName}}</td>
+                <td>{{item.user.lastName}}</td>
+                <td>{{item.user.companyId}}</td>
+                <td>{{item.producer}}</td>
+                <td>{{item.model}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

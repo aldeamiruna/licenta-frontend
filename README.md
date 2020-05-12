@@ -1,0 +1,2 @@
+# inventorydashboard_frontend
+frontend

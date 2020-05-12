@@ -1,0 +1,23 @@
+
+.close {
+    color: #aaaaaa;
+    position: relative;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+    
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .button{
+    background-color: #23d160;
+    margin: 25px;
+    margin-top: 40px;
+    width: 300px;
+}

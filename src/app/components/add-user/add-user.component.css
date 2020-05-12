@@ -1,0 +1,71 @@
+.form-group{
+    display: inline;
+  }
+  
+.form-label{
+  display:block;
+}
+.form-button{
+  float: right;
+}
+
+.head-addUserModal{
+  font-size: 20px;
+  color: #fcfcfc;
+  padding: 10px;
+  background-color:rgb(133,180,208);
+}
+
+.body-addUserModal{
+  padding: 20px;
+}
+
+.add-user-success {
+  display: none;
+  color: black;
+  text-align: center;
+  background-color: greenyellow;
+  width: 16%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  font-size: 1.7vw;
+  padding: 8px;
+}
+
+.add-user-error {
+  display: none;
+  color: rgb(223, 7, 7);
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  font-size: 1.7vw;
+  padding: 8px;
+}
+
+.duplicate-companyID-error {
+  display: none;
+  color: rgb(223, 7, 7);
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  font-size: 1.7vw;
+  padding: 8px;
+}
+
+.close {
+  color: #ffffff;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: -1%;
+}
+
+.close:hover,
+.close:focus {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  cursor: pointer;
+}

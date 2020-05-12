@@ -1,0 +1,10 @@
+<div class="custom-background">
+    <a>
+        <span class="close" (click)="closeModal()">&times;</span>
+    </a>
+    <fieldset>
+        <app-param [field]="subtitle"></app-param>
+        <app-param *ngFor="let field of fields; index as i" [field]="field" [parentIndex]="i">{{field}}</app-param>
+        <a class="button" (click)="done()">Done</a>
+    </fieldset>
+</div>

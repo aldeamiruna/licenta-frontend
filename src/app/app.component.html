@@ -1,0 +1,84 @@
+<div class="modalContent" *ngIf="displayDoc">
+  <!-- Modal content -->
+  <div class="docView">
+    <app-doc-view>
+    </app-doc-view>
+  </div>
+</div>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<section class="hero is-short">
+  <div class="hero-body">
+    <div class="topbar">
+      <div class="navbar-brand">
+        <h1 class="topbarTitle">Inventory</h1>
+        <div class="topBarbuttonPosition">
+          <button class="button" (click)="showDocView()">Documents</button>
+        </div>
+      </div>
+    </div>
+    <div class="tile is-ancestor">
+      <div class="tile is-vertical is-2">
+        <div class="tile">
+          <div class="tile is-parent is-vertical">
+            <ul class="ul-width">
+              <li routerLinkActive="active-menu-list-item"><img *ngIf="!dashboardLinkActive;else activeDashboard"
+                  src="../assets/images/dashboard.png " class="menu-img">
+                <ng-template #activeDashboard>
+                  <img src="../assets/images/dashboard_act.png" class="menu-img">
+                </ng-template>
+                <a routerLink="/dashboard" (click)="onClickActiveDashboard()">Dashboard</a>
+
+              </li>
+
+              <li routerLinkActive="active-menu-list-item"><img *ngIf="!inventoryLinkActive;else activeInventory"
+                  src="../assets/images/inventory.png" class="menu-img">
+                <ng-template #activeInventory>
+                  <img src="../assets/images/inventory_act.png" class="menu-img">
+                </ng-template>
+                <a routerLink="/inventory" (click)="onClickActiveInventory()">Inventory</a>
+              </li>
+               
+              <li routerLinkActive="active-menu-list-item"><img *ngIf="!categoryLinkActive;else activeCategory"
+                src="../assets/images/laptop.png" class="menu-img">
+              <ng-template #activeCategory>
+                <img src="../assets/images/laptop_active.png" class="menu-img">
+              </ng-template>
+              <a routerLink="/category" (click)="onClickActiveCategory()">Category</a>
+            </li>
+
+              <li routerLinkActive="active-menu-list-item"><img *ngIf="!usersLinkActive;else activeUsers"
+                  src="../assets/images/users.png" class="menu-img">
+                <ng-template #activeUsers>
+                  <img src="../assets/images/users_act.png" class="menu-img">
+                </ng-template>
+
+                <a routerLink="/user" (click)="onClickActiveUsers()">Users</a>
+              </li>
+
+              <li routerLinkActive="active-menu-list-item"><img *ngIf="!buyoutLinkActive;else activeBuyout"
+                src="../assets/images/laptop.png" class="menu-img">
+              <ng-template #activeBuyout>
+                <img src="../assets/images/laptop_active.png" class="menu-img">
+              </ng-template>
+              <a routerLink="/buyout" (click)="onClickActiveBuyout()">Buyout</a>
+            </li>
+
+              <li routerLinkActive="active-menu-list-item"><img *ngIf="!roomLinkActive;else activeRoom"
+                  src="../assets/images/room2.png" class="menu-img">
+                <ng-template #activeRoom>
+                  <img src="../assets/images/room_act.png" class="menu-img">
+                </ng-template>
+                <a routerLink="/rooms" (click)="onClickActiveRoom()">Rooms</a>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="tile is-vertical is-10" id="main-content">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</section>

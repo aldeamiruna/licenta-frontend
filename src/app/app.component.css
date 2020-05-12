@@ -1,0 +1,171 @@
+
+.hero.is-short{
+  height: 100%;
+}
+.topbar {
+  background-color: rgba(133,180,208,2);
+  width: -webkit-fill-available;
+  height: auto;
+
+}
+
+.navbar-brand, .navbar-tabs {
+  align-items: stretch;
+  display: flex;
+  flex-shrink: 0;
+}
+
+.topBarbuttonPosition{
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  padding: 10px;
+}
+
+.title.is-5 {
+  font-size: 1.7vw;
+  color: #ffffff;
+  font-style: italic;
+  align-content: right;
+}
+
+.hero-body {
+  flex-grow: 1;
+  flex-shrink: 0;
+  padding: 0rem 0rem;
+}
+.tile.is-ancestor {
+  height: 90%;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
+}
+
+.tile.is-2 {
+    flex: none;
+    background-color: #516673;
+    width: 15%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+}
+
+.tile.is-vertical.is-10{
+  flex: none;
+  width: 85%;
+}
+
+.tile.is-parent {
+  padding: 0rem;
+}
+
+ul {
+    list-style-type: none;
+    width: 15%;
+    height: auto;
+    position: fixed; 
+    margin-top: 10vh;
+  }
+
+.menu-img
+  {
+      vertical-align: middle;
+      margin-left:20px; 
+      width: 1.5vw;
+      height: auto;
+  }
+
+ul li a
+{
+    display: inline-block;
+    vertical-align: middle;
+    
+}
+
+  li a {
+    display: block;
+    color: #fdfdfc;
+    padding: 8px 12px;
+    text-decoration: none;
+    font-size: 1.2vw;
+    outline: none;
+  }
+
+  li:hover {
+    background-color: rgb(133,180,208);
+    transition:0.8s;
+  }
+
+  .active-menu-list-item {
+    background-color: rgb(133,180,208);
+  }
+
+.topbarTitle{
+  font-size: 1.7vw;
+  color: #ffffff;
+  font-style: italic;
+  margin-top:auto;
+  margin-bottom: auto;
+  margin-left: 1%;
+}
+
+.modalContent {
+  /* opacity:0.8; */
+  background-color:rgba(37, 37, 37,0.5);
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0px;
+  left:0px;
+  z-index:1;
+}
+
+.docView {
+  background-color: #fefefe;
+  margin: auto;
+  width: auto;
+  max-width: 80%;
+  overflow-x: auto;
+  height: auto;
+  max-height: 97%;
+  margin-top: 1%;
+}
+
+@media only screen and (max-width: 769px) {
+  .topbar {
+    position: unset;
+  }
+
+  .title.is-5 {
+    font-size: 1.25rem;
+    color: #ffffff;
+  }
+  .tile.is-2 {
+    height: unset;
+    width: auto;
+  }
+  ul {
+    position: sticky;
+    width: auto;
+    margin-top: 0;
+    text-align: center;
+    }
+
+  li a {
+    font-size: 1rem;
+  }
+  .tile.is-2 {
+    max-height: -webkit-fill-available;
+  }
+  
+  #main-content{
+    margin-top: 0;
+  }
+  .menu-img
+    {
+        margin-left: unset;
+        width: 20px;
+    }
+
+}
+

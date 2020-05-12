@@ -1,0 +1,44 @@
+<div class="modalContent" *ngIf="display">
+    <!-- Modal content -->
+    <div class="modalAddUser">
+        <app-add-user>
+        </app-add-user>
+    </div>
+</div>
+
+<div class="userButtons">
+    <button class="button" (click)="openAddUser()">Add User</button>
+</div>
+
+<div class="tableScroll">
+
+    <table>
+        <thead>
+            <!-- <th style="text-align: center"><a class="button" (click)="onClickOrder()">No.</a></th> -->
+            <th>CompanyId
+
+            </th>
+            <th>FirstName
+
+            </th>
+            <th>LastName
+
+            </th>
+            <th>Email
+
+            </th>
+
+            <th>Status
+                <select class="dropDown" [(ngModel)]="selectedStatus" (change)="filterUsers()">
+                    <option selected="selected" [ngValue]="None"></option>
+                    <option *ngFor="let state of statusList" [ngValue]="state">{{state.type}}</option>
+                </select>
+            </th>
+            <th></th>
+        <tbody>
+
+            <tr app-user-row *ngFor="let user of users" [user]="user" style="overflow: auto;"></tr>
+
+        </tbody>
+    </table>
+</div>

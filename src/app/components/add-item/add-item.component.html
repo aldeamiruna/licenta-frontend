@@ -1,0 +1,79 @@
+<div class="head-historyModal">
+    Add Item<span class="close" (click)="closeAddItem()">&times;</span>
+</div>
+<div class="body-addItemModal">
+    <div class="add-item-error" [ngStyle]="{'display':errorDisplay}">
+        Please insert all required fields!
+    </div>
+    <div class="form-group">
+        <label for="ItemType" class="form-label">
+            <b style="color: red">*</b> Item type
+        </label>
+        <input type="text" class="form-control" list="itemTypeList" [(ngModel)]="selectedItemType"
+            placeholder="Insert item type" autocomplete="off" [(ngStyle)]="errorItemType">
+        <datalist id="itemTypeList">
+            <option *ngFor="let existingType of itemTypes" [value]="existingType.type">
+        </datalist>
+    </div>
+    <div class="form-group">
+        <label for="Producer" class="form-label">Producer</label>
+        <input type="text" class="form-control" list="producerList" [(ngModel)]="selectedProducer"
+            placeholder="Insert producer" autocomplete="off">
+        <datalist id="producerList">
+            <option *ngFor="let producer of producers" [value]="producer">
+        </datalist>
+    </div>
+    <div class="form-group">
+        <label for="Model" class="form-label">Model</label>
+        <input type="string" class="form-control" list="modelList" [(ngModel)]="selectedModel"
+            placeholder="Insert model" autocomplete="off">
+        <datalist id="modelList">
+            <option *ngFor="let model of models" [value]="model">
+        </datalist>
+    </div>
+    <div class="form-group">
+        <label for="InventoryNo" class="form-label"><b style="color: red">*</b> Inventory Nr.</label>
+        <input type="number" min="0" class="form-control" [(ngModel)]="selectedInventoryNumber"
+            placeholder="Insert inventory nr." autocomplete="off" [(ngStyle)]="errorInventoryNumber"
+            (keyup)="onKeyupValidateInvNr()">
+        <p *ngIf="!validInventoryNumber" class="error-text">Inventory number already exists ! </p>
+    </div>
+    <div class="form-group">
+        <label for="InventoryNo" class="form-label">Serial Id</label>
+        <input type="text" class="form-control" [(ngModel)]="selectedSerialId" placeholder="Insert serial id"
+            autocomplete="off">
+    </div>
+    <div class="form-group">
+        <label for="Comment" class="form-label">Comment</label>
+        <input type="text" class="form-control" [(ngModel)]="selectedComment" placeholder="Insert a comment"
+            autocomplete="off">
+    </div>
+    <div class="form-group">
+        <label for="Status" class="form-label"><b style="color: red">*</b> Status</label>
+        <input type="text" class="form-control" list="itemStateList" [(ngModel)]="selectedState"
+            placeholder="Insert status" autocomplete="off" [(ngStyle)]="errorState">
+        <datalist id="itemStateList">
+            <option *ngFor="let state of stateList" [value]="state.type">
+        </datalist>
+    </div>
+    <div class="form-group">
+        <label for="Custode" class="form-label"><b style="color: red">*</b> Custode</label>
+        <input type="text" class="form-control" list="userList" [(ngModel)]="selectedUser" placeholder="Select custode"
+            autocomplete="off" [(ngStyle)]="errorUser">
+        <datalist id="userList">
+            <option *ngFor="let user of users"
+                [value]="[user.firstName, user.lastName, '(',user.companyId,')'].join(' ')">
+        </datalist>
+    </div>
+    <div class="form-group">
+        <label for="InventoryNo" class="form-label">Room</label>
+        <input type="text" class="form-control" list="roomList" [(ngModel)]="selectedRoom" placeholder="Select room"
+            autocomplete="off">
+        <datalist id="roomList">
+            <option *ngFor="let room of rooms" [value]="room.name">
+        </datalist>
+    </div>
+    <button type="button" class="form-button" (click)="onClickAddItem()">
+        <i class="glyphicon glyphicon-plus"></i>&nbsp;Save
+    </button>
+</div>

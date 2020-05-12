@@ -1,0 +1,90 @@
+
+.close {
+    color: #ffffff;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: -1%;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .head-detailsModal{
+    font-size: 20px;
+    color: #fcfcfc;
+    padding: 10px;
+    background-color:rgb(133,180,208);
+  }
+  
+  .body-detailsModal{
+    padding: 20px;
+    
+  }
+  
+  .roomDetails{
+    display: inline-block;
+    vertical-align:top;
+  }
+  
+  .itemTable{
+    display: inline-block;
+    margin-left: 25%;
+  }
+  
+  table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width:350px;
+  }
+  
+  
+  th {
+      padding: 10px;
+      top: 0;
+      text-align: left;
+      font-weight: normal;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: rgb(0, 0, 0);
+      border-bottom: 1px solid #ddd;
+  }
+  
+  tr:hover {background-color:#f5f5f5;}
+  
+  td{
+    padding: 10px;
+    text-align: left;
+    max-width: 105px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .comment-container{
+    display:none;
+    overflow: hidden;
+  }
+  
+  .comment:hover .comment-container{ 
+    padding: 10px;
+    height: auto;
+    max-height: 20%;
+    width: auto;
+    max-width: 20%;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    display:block;
+    position:fixed;
+    z-index: 1;
+    overflow:auto;
+    border: 1.5px solid #008cff;
+    word-break:break-all;
+    white-space: normal;
+    cursor: default;
+  }

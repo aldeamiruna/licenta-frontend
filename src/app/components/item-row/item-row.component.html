@@ -1,0 +1,75 @@
+<div class="modalContent" *ngIf="displayHistoryModal">
+    <!-- Modal content -->
+    <div class="modalHistory">
+        <app-history-item>
+        </app-history-item>
+    </div>
+</div>
+
+<td><a (click)="onClickShowHistory(item.id)"><img src="../../../assets/images/infos.png" height=auto width="100%"></a>
+</td>
+<td *ngIf="item.itemType">{{item.itemType.type}}</td>
+<td *ngIf="item">{{item.producer}}</td>
+<td *ngIf="item">{{item.model}}</td>
+<td *ngIf="item">{{item.inventoryNumber}}</td>
+<!-- <td *ngIf="item">{{item.serialId}}</td> -->
+<td *ngIf="item.room; else emptyTemplate">{{item.room.name}}</td>
+<td *ngIf="!editStatus; then showUser else showUsersDropBox"></td>
+<td *ngIf="!editStatus; then showComment else showTextBox "></td>
+<td *ngIf="!editStatus; then showText else showDropBox "></td>
+<!-- <td *ngIf="!editStatus; then showUsers"></td> -->
+
+
+<ng-template #emptyTemplate>
+    <td></td>
+</ng-template>
+
+<ng-template #showUser>
+    <td>
+        {{item.user.firstName + " " + item.user.lastName}}
+    </td>
+</ng-template>
+
+<ng-template #showUsersDropBox>
+    <td>
+        <input type="text" list="userListObj" class="userInput" placeholder="User" [(ngModel)]="selectedUser"
+            autocomplete="off">
+        <datalist id="userListObj">
+            <option *ngFor="let user of users"
+                [value]="[user.firstName, user.lastName, '(',user.companyId,')'].join(' ')">
+        </datalist>
+    </td>
+</ng-template>
+
+<ng-template #showComment>
+    <td class="comment" (mouseenter)="mouseCoordinates($event,item.comment)">
+        {{item.comment}}
+        <div *ngIf="item.comment && item.comment.length >=9" [ngStyle]="commentContainerLocation()"
+            class="comment-container">
+            {{item.comment}}</div>
+    </td>
+</ng-template>
+<ng-template #showTextBox>
+    <td>
+        <input class="commentInput" type="text" name="Comment" placeholder="Comment" [(ngModel)]=inputText>
+    </td>
+</ng-template>
+
+<ng-template #showText>
+    <td *ngIf="item">{{item.state.type}}</td>
+</ng-template>
+
+<ng-template #showDropBox>
+    <td>
+        <select required id="selectCss" class="dropDown" [(ngModel)]=selectedState name="selectedState">
+            <option></option>
+            <option *ngFor="let state of stateList" [ngValue]="state">{{state.type}}</option>
+        </select>
+    </td>
+</ng-template>
+
+<td>
+    <button id="myButton" class="button-position" (click)="editClick()" type="button"
+        value="Edit">{{editButton}}</button>
+    <button class="button-position" (click)="cancelClick()" *ngIf="cancelStatus">Cancel</button>
+</td>
