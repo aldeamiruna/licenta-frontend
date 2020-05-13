@@ -6,8 +6,32 @@ import { HistoryItemComponent } from './components/history-item/history-item.com
 import { BuyoutComponent } from './components/buyout/buyout.component';
 import { RoomComponent } from './components/room/room.component'
 import { CategoryComponent } from './components/category/category.component';
+import {HomeComponent} from './components/home/home.component';
+import {AdminComponent} from './components/admin/admin.component';
+import {LoginComponent} from './components/login';
+import { AuthGuard } from './_guards';
+import { Role } from './models';
+
 export const routes: Routes = [
-    { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+    {
+        path: '',
+        component: HomeComponent,
+        canActivate: [AuthGuard]
+    },
+    { 
+        path: 'admin', 
+        component: AdminComponent, 
+        canActivate: [AuthGuard], 
+        data: { roles: [Role.Admin] } 
+    },
+    { 
+        path: 'login', 
+        component: LoginComponent 
+    },
+
+    // otherwise redirect to home
+    { path: '**', redirectTo: '' },
+
     {
         path: 'inventory', component: InventoryComponent
     },

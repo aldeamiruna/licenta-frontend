@@ -15,6 +15,14 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
+  getAll() {
+    return this.httpClient.get<User[]>(`/users`);
+}
+
+  getById(id: number) {
+      return this.httpClient.get<User>(`/users/${id}`);
+  }
+
   fetchInventoryOrderedAsc(): Promise<User[]> {
     return this.httpClient.get<User[]>(`${UserService.API_URL}/users/`)
       .toPromise();
