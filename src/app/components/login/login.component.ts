@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
+import{AppComponent} from 'src/app/app.component';
 
 import { AuthenticationService } from '../../services/UserService/authentication.service';
 
-@Component({templateUrl: 'login.component.html'})
+@Component({selector: 'app-login',templateUrl: 'login.component.html'})
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     loading = false;
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
-        private authenticationService: AuthenticationService
+        private authenticationService: AuthenticationService,
+        private appComp: AppComponent
     ) {
         // redirect to home if already logged in
         if (this.authenticationService.currentUserValue) { 
@@ -40,12 +42,13 @@ export class LoginComponent implements OnInit {
 
     onSubmit() {
         this.submitted = true;
-
+        
         // stop here if form is invalid
         if (this.loginForm.invalid) {
             return;
         }
-
+        this.appComp.userLogged = true;
+        this.appComp.closeLoginModal();
         this.loading = true;
         this.authenticationService.login(this.f.username.value, this.f.password.value)
             .pipe(first())

@@ -120,6 +120,15 @@ ul li a
   z-index:1;
 }
 
+.close {
+  color: #2b2828;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: -1%;
+  cursor: pointer
+}
+
 .docView {
   background-color: #fefefe;
   margin: auto;
@@ -129,6 +138,25 @@ ul li a
   height: auto;
   max-height: 97%;
   margin-top: 1%;
+}
+
+.loginView{
+  background-color: #fefefe;
+  margin: auto;
+  width: 40%;
+  max-width: 80%;
+  overflow-x: auto;
+  height: auto;
+  max-height: 97%;
+  margin-top: 10%;
+}
+
+#login-size-constraint{
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3%;
+  margin-top: 3%;
 }
 
 @media only screen and (max-width: 769px) {

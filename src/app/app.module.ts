@@ -34,8 +34,9 @@ import { ReactiveFormsModule }    from '@angular/forms';
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
-import { HomeComponent } from './components/home/home.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { ShopComponent } from './components/shop/shop.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -59,8 +60,9 @@ import { AdminComponent } from './components/admin/admin.component';
     EditDocComponent,
     EditableTextComponent,
     LoginComponent,
-    HomeComponent,
-    AdminComponent
+    AdminComponent,
+    ShopComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

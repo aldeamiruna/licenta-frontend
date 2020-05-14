@@ -6,17 +6,20 @@ import { HistoryItemComponent } from './components/history-item/history-item.com
 import { BuyoutComponent } from './components/buyout/buyout.component';
 import { RoomComponent } from './components/room/room.component'
 import { CategoryComponent } from './components/category/category.component';
-import {HomeComponent} from './components/home/home.component';
 import {AdminComponent} from './components/admin/admin.component';
 import {LoginComponent} from './components/login';
 import { AuthGuard } from './_guards';
 import { Role } from './models';
+import { ShopComponent } from './components/shop/shop.component';
 
 export const routes: Routes = [
     {
-        path: '',
-        component: HomeComponent,
-        canActivate: [AuthGuard]
+        path: 'shop',
+        component: ShopComponent
+    },
+    { 
+        path: 'login', 
+        component: LoginComponent 
     },
     { 
         path: 'admin', 
@@ -24,31 +27,44 @@ export const routes: Routes = [
         canActivate: [AuthGuard], 
         data: { roles: [Role.Admin] } 
     },
-    { 
-        path: 'login', 
-        component: LoginComponent 
+    {
+        path: 'inventory', 
+        component: InventoryComponent,
+        canActivate: [AuthGuard],
+        data: { roles: [Role.Admin] } 
+    },
+    {
+        path: 'user', 
+        component: UserComponent,
+        canActivate: [AuthGuard],
+        data: { roles: [Role.Admin] } 
+    },
+    {
+        path: 'dashboard', 
+        component: DashboardComponent,
+        canActivate: [AuthGuard],
+        data: { roles: [Role.Admin] } 
+    },
+    {
+        path: 'category', 
+        component: CategoryComponent,
+        canActivate: [AuthGuard],
+        data: { roles: [Role.Admin] } 
+
+    },
+    {
+        path: 'buyout', 
+        component: BuyoutComponent,
+        canActivate: [AuthGuard],
+        
+    },
+    {
+        path: 'rooms', 
+        component: RoomComponent,
+        canActivate: [AuthGuard]
     },
 
     // otherwise redirect to home
-    { path: '**', redirectTo: '' },
+    { path: '**', redirectTo: 'shop' },
 
-    {
-        path: 'inventory', component: InventoryComponent
-    },
-    {
-        path: 'user', component: UserComponent
-    },
-    {
-        path: 'dashboard', component: DashboardComponent
-    },
-    {
-        path: 'category', component: CategoryComponent
-
-    },
-    {
-        path: 'buyout', component: BuyoutComponent
-    },
-    {
-        path: 'rooms', component: RoomComponent
-    }
 ]
