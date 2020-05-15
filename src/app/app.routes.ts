@@ -6,11 +6,9 @@ import { HistoryItemComponent } from './components/history-item/history-item.com
 import { BuyoutComponent } from './components/buyout/buyout.component';
 import { RoomComponent } from './components/room/room.component'
 import { CategoryComponent } from './components/category/category.component';
-import {LoginComponent} from './components/login';
 import { AuthGuard } from './_guards';
 import { Role } from './models';
 import { ShopComponent } from './components/shop/shop.component';
-import { RegisterComponent } from './components/register/register.component';
 
 export const routes: Routes = [
     {
@@ -35,6 +33,12 @@ export const routes: Routes = [
         canActivate: [AuthGuard],
         data: { roles: [Role.Admin] } 
 
+    },
+    {
+        path: 'user', 
+        component: UserComponent,
+        canActivate: [AuthGuard],
+        data: { roles: [Role.Admin] } 
     },
     {
         path: 'buyout', 
