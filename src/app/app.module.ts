@@ -34,7 +34,6 @@ import { ReactiveFormsModule }    from '@angular/forms';
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
-import { AdminComponent } from './components/admin/admin.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AlertComponent } from './components/alert/alert.component';
@@ -60,7 +59,6 @@ import { AlertComponent } from './components/alert/alert.component';
     EditDocComponent,
     EditableTextComponent,
     LoginComponent,
-    AdminComponent,
     ShopComponent,
     RegisterComponent,
     AlertComponent

@@ -6,7 +6,6 @@ import { HistoryItemComponent } from './components/history-item/history-item.com
 import { BuyoutComponent } from './components/buyout/buyout.component';
 import { RoomComponent } from './components/room/room.component'
 import { CategoryComponent } from './components/category/category.component';
-import {AdminComponent} from './components/admin/admin.component';
 import {LoginComponent} from './components/login';
 import { AuthGuard } from './_guards';
 import { Role } from './models';
@@ -18,21 +17,9 @@ export const routes: Routes = [
         path: 'shop',
         component: ShopComponent
     },
-    { 
-        path: 'admin', 
-        component: AdminComponent, 
-        canActivate: [AuthGuard], 
-        data: { roles: [Role.Admin] } 
-    },
     {
         path: 'inventory', 
         component: InventoryComponent,
-        canActivate: [AuthGuard],
-        data: { roles: [Role.Admin] } 
-    },
-    {
-        path: 'user', 
-        component: UserComponent,
         canActivate: [AuthGuard],
         data: { roles: [Role.Admin] } 
     },

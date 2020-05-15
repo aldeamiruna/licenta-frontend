@@ -26,6 +26,8 @@ export class AppComponent implements OnInit {
   registerModal:boolean =false;
   userLogged: boolean = false;
   currentUser: UserAccount;
+  showMessage: boolean;
+  successMessage:string;
 
   constructor(
         private router: Router,
@@ -60,69 +62,77 @@ export class AppComponent implements OnInit {
       this.registerModal=false;
     }
 
+    showSuccessMessage() {
+      this.showMessage = true;
+      setTimeout(() => {
+        this.showMessage = false;
+      }, 3000)
+      
+    }
+
   ngOnInit(): void {
     this.userLogged = this.currentUser?true:false;
     
-    if (window.location.pathname == "/dashboard") {
+    // if (window.location.pathname == "/dashboard") {
 
-      this.dashboardLinkActive = true;
+    //   this.dashboardLinkActive = true;
 
-    } else if (window.location.pathname == "/inventory") {
+    // } else if (window.location.pathname == "/inventory") {
 
-      this.inventoryLinkActive = true;
+    //   this.inventoryLinkActive = true;
 
-    } else if (window.location.pathname == "/category") {
+    // } else if (window.location.pathname == "/category") {
 
-      this.usersLinkActive = true;
+    //   this.usersLinkActive = true;
 
-    } else if (window.location.pathname == "/user") {
+    // } else if (window.location.pathname == "/user") {
 
-      this.usersLinkActive = true;
-    }
-    else if (window.location.pathname == "/buyout") {
-      this.buyoutLinkActive = true;
-    }
-    else if (window.location.pathname == "/room") {
-      this.roomLinkActive = true;
-    }
+    //   this.usersLinkActive = true;
+    // }
+    // else if (window.location.pathname == "/buyout") {
+    //   this.buyoutLinkActive = true;
+    // }
+    // else if (window.location.pathname == "/room") {
+    //   this.roomLinkActive = true;
+    // }
 
   }
 
-  activeImgLink() {//TODO: function happens to quickly and window.location.pathname doesn't have time to process the correct path
-    console.log(window.location.pathname);
-    setTimeout(() => {
-      if (window.location.pathname == "/dashboard") {
-        this.dashboardLinkActive = true;
-      } else {
-        this.dashboardLinkActive = false;
-      }
-      if (window.location.pathname == "/inventory") {
-        this.inventoryLinkActive = true;
-      } else {
-        this.inventoryLinkActive = false;
-      }
-      if (window.location.pathname == "/category") {
-        this.categoryLinkActive = true;
-      } else {
-        this.categoryLinkActive = false;
-      }
-      if (window.location.pathname == "/user") {
-        this.usersLinkActive = true;
-      } else {
-        this.usersLinkActive = false;
-      }
-     if (window.location.pathname == "/buyout") {
-      this.buyoutLinkActive = true;
-      } else {
-      this.buyoutLinkActive = false;
-      }
-      if (window.location.pathname == "/room") {
-        this.roomLinkActive = true;
-        } else {
-        this.roomLinkActive = false;
-        }
-    }, 500);
-  }
+  // activeImgLink() {//TODO: function happens to quickly and window.location.pathname doesn't have time to process the correct path
+  //   console.log(window.location.pathname);
+  //   setTimeout(() => {
+  //     if (window.location.pathname == "/dashboard") {
+  //       this.dashboardLinkActive = true;
+  //     } else {
+  //       this.dashboardLinkActive = false;
+  //     }
+  //     if (window.location.pathname == "/inventory") {
+  //       this.inventoryLinkActive = true;
+  //     } else {
+  //       this.inventoryLinkActive = false;
+  //     }
+  //     if (window.location.pathname == "/category") {
+  //       this.categoryLinkActive = true;
+  //     } else {
+  //       this.categoryLinkActive = false;
+  //     }
+  //     if (window.location.pathname == "/user") {
+  //       this.usersLinkActive = true;
+  //     } else {
+  //       this.usersLinkActive = false;
+  //     }
+  //    if (window.location.pathname == "/buyout") {
+  //     this.buyoutLinkActive = true;
+  //     } else {
+  //     this.buyoutLinkActive = false;
+  //     }
+  //     if (window.location.pathname == "/room") {
+  //       this.roomLinkActive = true;
+  //       } else {
+  //       this.roomLinkActive = false;
+  //       }
+  //   }, 500);
+  // }
 
   onClickActiveDashboard() {
     this.dashboardLinkActive = true;

@@ -120,6 +120,13 @@ ul li a
   z-index:1;
 }
 
+.modalContentNoBlur {
+  position:fixed;
+  top: 10%;
+  right:1%;
+  z-index:1;
+}
+
 .close {
   color: #a19a9a;
   float: right;
@@ -181,6 +188,15 @@ ul li a
   margin: auto;
   margin-bottom: 5%;
   margin-top: 5%;
+}
+
+.popUp{
+  background-color: #fefefe;
+  margin: auto;
+  border-radius: 20px;
+  width: auto;
+  overflow-x: auto;
+  height: auto;
 }
 
 @media only screen and (max-width: 769px) {

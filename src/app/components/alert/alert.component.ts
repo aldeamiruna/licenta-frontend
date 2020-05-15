@@ -15,10 +15,10 @@ export class AlertComponent implements OnInit, OnDestroy {
             .subscribe(message => {
                 switch (message && message.type) {
                     case 'success':
-                        message.cssClass = 'alert alert-success';
+                        message.cssClass = 'notification is-success';
                         break;
                     case 'error':
-                        message.cssClass = 'alert alert-danger';
+                        message.cssClass = 'notification is-danger';
                         break;
                 }
 

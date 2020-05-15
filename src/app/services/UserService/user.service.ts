@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import Item from '../../models/Item';
 import { Observable } from 'rxjs';
 import State from '../../models/State';
@@ -7,6 +7,7 @@ import ItemType from 'src/app/models/ItemType';
 import User from 'src/app/models/User';
 import UserStatus from 'src/app/models/UserStatus';
 import { UserAccount } from 'src/app/models/UserAccount';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
@@ -8,7 +8,7 @@ import { UserAccount, Role } from '../models';
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        const users: UserAccount[] = [
+        let users: UserAccount[] = [
             { id: 1, username: 'admin', password: 'admin', firstName: 'Admin', lastName: 'User', role: Role.Admin },
             { id: 2, username: 'user', password: 'user', firstName: 'Normal', lastName: 'User', role: Role.User }
         ];
@@ -24,7 +24,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             // authenticate - public
             if (request.url.endsWith('/users/authenticate') && request.method === 'POST') {
                 const user = users.find(x => x.username === request.body.username && x.password === request.body.password);
-                if (!user) return error('Username or password is incorrect');
+                if (!user) {
+                    return error('Username or password is incorrect');
+                }
                 return ok({
                     id: user.id,
                     username: user.username,
@@ -57,6 +59,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 return ok(users);
             }
 
+            if(request.url.endsWith('/users/register') && request.method ==='POST'){
+                return register(request.body);
+            }
             // pass through any requests not handled above
             return next.handle(request);
         }))
@@ -66,6 +71,18 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         .pipe(dematerialize());
 
         // private helper functions
+
+        function register(body) {
+            let user:UserAccount = body;
+            if (users.find(x => x.username === user.username)) {
+                return error('Username "' + user.username + '" is already taken')
+            }
+            user.id = users.length ? Math.max(...users.map(x => x.id)) + 1 : 1;
+            user.role = Role.User;
+            users.push(user);
+            localStorage.setItem('users', JSON.stringify(users));
+            return ok(user);
+        }
 
         function ok(body) {
             return of(new HttpResponse({ status: 200, body }));
