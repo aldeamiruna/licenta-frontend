@@ -3,19 +3,19 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { LoginUser } from '../../models';
+import { UserAccount } from '../../models';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-    private currentUserSubject: BehaviorSubject<LoginUser>;
-    public currentUser: Observable<LoginUser>;
+    private currentUserSubject: BehaviorSubject<UserAccount>;
+    public currentUser: Observable<UserAccount>;
 
     constructor(private http: HttpClient) {
-        this.currentUserSubject = new BehaviorSubject<LoginUser>(JSON.parse(localStorage.getItem('currentUser')));
+        this.currentUserSubject = new BehaviorSubject<UserAccount>(JSON.parse(localStorage.getItem('currentUser')));
         this.currentUser = this.currentUserSubject.asObservable();
     }
 
-    public get currentUserValue(): LoginUser {
+    public get currentUserValue(): UserAccount {
         return this.currentUserSubject.value;
     }
 

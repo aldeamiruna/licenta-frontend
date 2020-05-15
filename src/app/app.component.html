@@ -16,10 +16,12 @@
 </div>
 
 <div class="modalContent" *ngIf="registerModal">
-  <div class="docView">
+  <div class="registerView">
     <span class="close" (click)="closeRegisterModal()">&times;</span>
+      <div id="register-size-constraint">
         <app-register>
         </app-register>
+      </div>
     </div>
 </div>
 
@@ -33,7 +35,6 @@
           <button class="button" *ngIf="isAdmin" (click)="showDocView()">Documents</button>
           <button class="button" *ngIf="userLogged" (click)="logout()">Logout</button>
           <button class="button" *ngIf="!userLogged" (click)="showLoginModal()">Login</button>
-          <button class="button" (click)="showRegisterModal()" >Register</button>
         </div>
       </div>
     </div>

@@ -6,6 +6,7 @@ import State from '../../models/State';
 import ItemType from 'src/app/models/ItemType';
 import User from 'src/app/models/User';
 import UserStatus from 'src/app/models/UserStatus';
+import { UserAccount } from 'src/app/models/UserAccount';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,18 @@ export class UserService {
     return this.httpClient.get<User[]>(`/users`);
 }
 
+  getAllAccount() {
+    return this.httpClient.get<UserAccount[]>(`/users`);
+  }
+
+  register(user: UserAccount) {
+    return this.httpClient.post(`/users/register`, user);
+  }
+
+  delete(id: number) {
+    return this.httpClient.delete(`/users/${id}`);
+  }
+  
   getById(id: number) {
       return this.httpClient.get<User>(`/users/${id}`);
   }

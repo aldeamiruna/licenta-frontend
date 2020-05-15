@@ -6,7 +6,8 @@ import{AppComponent} from 'src/app/app.component';
 
 import { AuthenticationService } from '../../services/UserService/authentication.service';
 
-@Component({selector: 'app-login',templateUrl: 'login.component.html'})
+@Component({selector: 'app-login',
+            templateUrl: 'login.component.html'})
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     loading = false;
@@ -35,6 +36,11 @@ export class LoginComponent implements OnInit {
 
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    }
+
+    showRegisterModal(){
+        this.appComp.closeLoginModal();
+        this.appComp.registerModal=true;
     }
 
     // convenience getter for easy access to form fields

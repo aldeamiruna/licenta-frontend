@@ -11,15 +11,12 @@ import {LoginComponent} from './components/login';
 import { AuthGuard } from './_guards';
 import { Role } from './models';
 import { ShopComponent } from './components/shop/shop.component';
+import { RegisterComponent } from './components/register/register.component';
 
 export const routes: Routes = [
     {
         path: 'shop',
         component: ShopComponent
-    },
-    { 
-        path: 'login', 
-        component: LoginComponent 
     },
     { 
         path: 'admin', 

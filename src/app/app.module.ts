@@ -37,7 +37,7 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AdminComponent } from './components/admin/admin.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { RegisterComponent } from './components/register/register.component';
-
+import { AlertComponent } from './components/alert/alert.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +62,8 @@ import { RegisterComponent } from './components/register/register.component';
     LoginComponent,
     AdminComponent,
     ShopComponent,
-    RegisterComponent
+    RegisterComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,

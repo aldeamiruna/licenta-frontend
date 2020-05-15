@@ -121,14 +121,18 @@ ul li a
 }
 
 .close {
-  color: #2b2828;
+  color: #a19a9a;
   float: right;
-  font-size: 28px;
+  margin-right: 4%;
+  font-size: 40px;
   font-weight: bold;
   margin-top: -1%;
   cursor: pointer
 }
 
+.close:hover{
+  color: #2e2c2c;
+}
 .docView {
   background-color: #fefefe;
   margin: auto;
@@ -143,6 +147,7 @@ ul li a
 .loginView{
   background-color: #fefefe;
   margin: auto;
+  border-radius: 20px;
   width: 40%;
   max-width: 80%;
   overflow-x: auto;
@@ -151,12 +156,31 @@ ul li a
   margin-top: 10%;
 }
 
+.registerView{
+  background-color: #fefefe;
+  margin: auto;
+  border-radius: 20px;
+  width: 35%;
+  max-width: 80%;
+  overflow-x: auto;
+  height: auto;
+  max-height: 97%;
+  margin-top: 10%;
+}
+
 #login-size-constraint{
-  width: 80%;
+  width: 50%;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 3%;
   margin-top: 3%;
+}
+
+#register-size-constraint{
+  width: 50%;
+  margin: auto;
+  margin-bottom: 5%;
+  margin-top: 5%;
 }
 
 @media only screen and (max-width: 769px) {

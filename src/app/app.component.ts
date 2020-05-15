@@ -4,7 +4,7 @@ import Item from 'src/app/models/Item';
 import { Router } from '@angular/router';
 
 import { AuthenticationService } from './services/UserService/authentication.service';
-import { LoginUser, Role } from './models';
+import { UserAccount, Role } from './models';
 
 @Component({
   selector: 'app',
@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
   loginModal: boolean = false;
   registerModal:boolean =false;
   userLogged: boolean = false;
-  currentUser: LoginUser;
+  currentUser: UserAccount;
 
   constructor(
         private router: Router,
@@ -53,9 +53,7 @@ export class AppComponent implements OnInit {
     }
 
     showRegisterModal(){
-      console.log("sss");
       this.registerModal=true;
-      console.log(this.registerModal)
     }
 
     closeRegisterModal(){
@@ -63,7 +61,8 @@ export class AppComponent implements OnInit {
     }
 
   ngOnInit(): void {
-
+    this.userLogged = this.currentUser?true:false;
+    
     if (window.location.pathname == "/dashboard") {
 
       this.dashboardLinkActive = true;
