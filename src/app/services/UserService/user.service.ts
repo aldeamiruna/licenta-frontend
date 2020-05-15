@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import Item from '../../models/Item';
 import { Observable } from 'rxjs';
 import State from '../../models/State';
 import ItemType from 'src/app/models/ItemType';
 import User from 'src/app/models/User';
 import UserStatus from 'src/app/models/UserStatus';
+import { UserAccount } from 'src/app/models/UserAccount';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +16,26 @@ export class UserService {
   static readonly API_URL = 'http://localhost:8080';
 
   constructor(private httpClient: HttpClient) { }
+
+  getAll() {
+    return this.httpClient.get<User[]>(`/users`);
+}
+
+  getAllAccount() {
+    return this.httpClient.get<UserAccount[]>(`/users`);
+  }
+
+  register(user: UserAccount) {
+    return this.httpClient.post(`/users/register`, user);
+  }
+
+  delete(id: number) {
+    return this.httpClient.delete(`/users/${id}`);
+  }
+  
+  getById(id: number) {
+      return this.httpClient.get<User>(`/users/${id}`);
+  }
 
   fetchInventoryOrderedAsc(): Promise<User[]> {
     return this.httpClient.get<User[]>(`${UserService.API_URL}/users/`)

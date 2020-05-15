@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MatTableModule, MatCheckboxModule, MatDialogModule,MatCardModule } from '@angular/material';
@@ -28,10 +28,15 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { EditDocComponent } from './components/edit-doc/edit-doc.component';
 import { EditableTextComponent } from './components/editable-text/editable-text.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './components/login/login.component';
+import { ReactiveFormsModule }    from '@angular/forms';
 
-
-
-
+// used to create fake backend
+import { fakeBackendProvider } from './_helpers';
+import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+import { ShopComponent } from './components/shop/shop.component';
+import { RegisterComponent } from './components/register/register.component';
+import { AlertComponent } from './components/alert/alert.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,10 +57,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DetailsRoomComponent,
     HistoryItemComponent,
     EditDocComponent,
-    EditableTextComponent
+    EditableTextComponent,
+    LoginComponent,
+    ShopComponent,
+    RegisterComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot(routes),
@@ -65,7 +75,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatCardModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [ { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+    // provider used to create fake backend
+    fakeBackendProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
