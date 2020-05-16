@@ -36,6 +36,7 @@ import { JwtInterceptor, ErrorInterceptor, fakeBackendProvider } from './_helper
 import { ShopComponent } from './components/shop/shop.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AlertComponent } from './components/alert/alert.component';
+import { OrdersComponent } from './components/orders/orders.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +61,8 @@ import { AlertComponent } from './components/alert/alert.component';
     LoginComponent,
     ShopComponent,
     RegisterComponent,
-    AlertComponent
+    AlertComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,

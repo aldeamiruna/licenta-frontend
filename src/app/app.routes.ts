@@ -9,11 +9,18 @@ import { CategoryComponent } from './components/category/category.component';
 import { AuthGuard } from './_guards';
 import { Role } from './models';
 import { ShopComponent } from './components/shop/shop.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 export const routes: Routes = [
     {
         path: 'shop',
         component: ShopComponent
+    },
+    {
+        path: 'orders', 
+        component: OrdersComponent,
+        canActivate: [AuthGuard],
+        data: { roles: [Role.Admin] } 
     },
     {
         path: 'inventory', 
