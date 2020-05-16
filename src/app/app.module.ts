@@ -37,6 +37,7 @@ import { ShopComponent } from './components/shop/shop.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AlertComponent } from './components/alert/alert.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { UserOrderComponent } from './components/user-order/user-order.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +63,8 @@ import { OrdersComponent } from './components/orders/orders.component';
     ShopComponent,
     RegisterComponent,
     AlertComponent,
-    OrdersComponent
+    OrdersComponent,
+    UserOrderComponent
   ],
   imports: [
     BrowserModule,

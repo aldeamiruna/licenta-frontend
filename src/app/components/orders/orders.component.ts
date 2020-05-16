@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-orders',
@@ -9,12 +10,13 @@ export class OrdersComponent implements OnInit {
 
   displayedColumns = ['position', 'username', 'products', 'total'];
   dataSource = ELEMENT_DATA;
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
   }
 
   getRecord = (row)=>{
+    this.router.navigate(['/userorder'])
     console.log(row)
   }  
 }
