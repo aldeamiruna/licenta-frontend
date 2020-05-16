@@ -32,8 +32,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ReactiveFormsModule }    from '@angular/forms';
 
 // used to create fake backend
-import { fakeBackendProvider } from './_helpers';
-import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+import { JwtInterceptor, ErrorInterceptor, fakeBackendProvider } from './_helpers';
 import { ShopComponent } from './components/shop/shop.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AlertComponent } from './components/alert/alert.component';
@@ -75,8 +74,8 @@ import { AlertComponent } from './components/alert/alert.component';
     MatCardModule,
     BrowserAnimationsModule
   ],
-  providers: [ { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+  providers: [ { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
 
     // provider used to create fake backend
     fakeBackendProvider],
