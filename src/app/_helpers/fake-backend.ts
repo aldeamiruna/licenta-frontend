@@ -3,13 +3,24 @@ import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTT
 import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 import { UserAccount, Role } from '../models';
+import { UsersOrders } from '../components/orders/orders.component';
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
+    position: number;
+    username: string;
+    products: number;
+    total: string;
+
     users: UserAccount[] = [
         { id: 1, username: 'admin', password: 'admin', firstName: 'Admin', lastName: 'User', role: Role.Admin },
         { id: 2, username: 'user', password: 'user', firstName: 'Normal', lastName: 'User', role: Role.User }
     ];
+
+    usersOrders=[
+        {id:1, username:"user", orderProducts:[{position:1,product:"softX", value:20},
+                                        {position:2,product:"softY", value:10}] }
+    ]
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const authHeader = request.headers.get('Authorization');
@@ -58,6 +69,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 return ok(this.users);
             }
 
+            //register new user
             if(request.url.endsWith('/users/register') && request.method ==='POST'){
                 let user:UserAccount = request.body;
                 if (this.users.find(x => x.username === user.username)) {
@@ -70,6 +82,14 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 return ok(user);
             }
 
+            if (request.url.endsWith('/user/order') && request.method === 'POST') {
+                if (role !== Role.Admin) return unauthorised();
+                const orderProducts = this.usersOrders.filter(order => order.id===request.body)
+                                                        .map(order => order.orderProducts);
+                if(!orderProducts){return}
+                let products = [].concat.apply([], orderProducts);
+                return ok(products);
+            }
                 // pass through any requests not handled above
                 return next.handle(request);
         }))
