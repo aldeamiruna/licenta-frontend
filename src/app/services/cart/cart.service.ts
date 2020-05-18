@@ -17,6 +17,5 @@ export class DbUserOrder {
 })
 export class CartService {
   cart:Product[]=[];
-  order:DbUserOrder=new DbUserOrder();
   constructor() { }
 }

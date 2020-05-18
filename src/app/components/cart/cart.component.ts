@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService, DbProduct } from 'src/app/services/cart';
+import { CartService, DbProduct, DbUserOrder } from 'src/app/services/cart';
 import { Product } from 'src/app/services/shop-products';
 import { MatTableDataSource } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
@@ -63,7 +63,6 @@ export class CartComponent implements OnInit {
       return
     }
     if(this.appComp.userLogged){
-      console.log("logat")
       let user;
       this.authentication.currentUser.pipe(first())
       .subscribe(
@@ -81,11 +80,13 @@ export class CartComponent implements OnInit {
         dbProduct.value = product.value;
         return dbProduct;
       });
-      console.log(userProducts)
-      this.cartService.order.username = user.username;
-      userProducts.forEach(userProduct => this.cartService.order.orderProducts.push(userProduct));
-      console.log(this.cartService.order);
+      let userOrder = new DbUserOrder();
+      userOrder.username = user.username;
+      userProducts.forEach(userProduct => userOrder.orderProducts.push(userProduct));
+      console.log(userOrder);
+      //flushing the data saved in variables to reset the user cart
       this.cart = [];
+      this.cartService.cart=[];
       this.dataSource = new MatTableDataSource<Product>(this.cart);
       return;
     }
