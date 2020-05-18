@@ -4,6 +4,7 @@ import { Product } from 'src/app/services/shop-products';
 import { MatTableDataSource } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
 import { AppComponent } from 'src/app/app.component';
+import { AuthenticationService } from 'src/app/services/UserService';
 
 @Component({
   selector: 'app-cart',
@@ -14,7 +15,7 @@ export class CartComponent implements OnInit {
   cart;
   dataSource;
   selection;
-  constructor(private cartService: CartService, private appComp:AppComponent) { }
+  constructor(private cartService: CartService, private appComp:AppComponent, private authentication: AuthenticationService) { }
 
   ngOnInit() {
     this.cart = this.cartService.cart;
@@ -58,9 +59,9 @@ export class CartComponent implements OnInit {
       // console.log(this.cart)
       return;
     }
-    
     if(!this.appComp.userLogged){
       this.appComp.loginModal=true;
+      console.log(this.authentication.currentUser)
     }
 
   }

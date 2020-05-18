@@ -64,7 +64,6 @@ export class LoginComponent implements OnInit {
                     this.appComp.closeLoginModal();
                     this.appComp.successMessage=`Welcome ${response.username}!`;
                     this.appComp.showSuccessMessage();
-                    this.router.navigate([this.returnUrl]);
                 },
                 error => {
                     this.error = error;
