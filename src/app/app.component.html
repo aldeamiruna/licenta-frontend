@@ -38,6 +38,7 @@
       <div class="navbar-brand">
         <h1 class="topbarTitle">Inventory</h1>
         <div class="topBarbuttonPosition">
+          <button class="button" (click)="openCart()">Cart</button>
           <button class="button" *ngIf="isAdmin" (click)="showDocView()">Documents</button>
           <button class="button" *ngIf="userLogged" (click)="logout()">Logout</button>
           <button class="button" *ngIf="!userLogged" (click)="showLoginModal()">Login</button>

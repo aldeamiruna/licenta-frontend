@@ -40,6 +40,10 @@ export class AppComponent implements OnInit {
         return this.currentUser && this.currentUser.role === Role.Admin;
     }
 
+    openCart(){
+      this.router.navigate(['/cart']);
+    }
+
     showLoginModal(){
         this.loginModal=true;
     }
