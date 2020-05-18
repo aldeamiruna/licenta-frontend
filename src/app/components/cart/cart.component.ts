@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from 'src/app/services/cart';
+import { CartService, DbProduct } from 'src/app/services/cart';
 import { Product } from 'src/app/services/shop-products';
 import { MatTableDataSource } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
 import { AppComponent } from 'src/app/app.component';
 import { AuthenticationService } from 'src/app/services/UserService';
+import { map, first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cart',
@@ -53,18 +54,43 @@ export class CartComponent implements OnInit {
   }
 
   submitOrder(){//TODO: send the cart items to backend if user is logged
-    console.log(this.cart)
-    console.log(this.appComp.userLogged)
+    console.log("cart==>",this.cart)
     if(this.cart===undefined || this.cart.length==0){
-      // console.log(this.cart)
       return;
     }
     if(!this.appComp.userLogged){
       this.appComp.loginModal=true;
-      console.log(this.authentication.currentUser)
+      return
     }
-
+    if(this.appComp.userLogged){
+      console.log("logat")
+      let user;
+      this.authentication.currentUser.pipe(first())
+      .subscribe(
+          response => {
+              user = response;
+          },
+          error => {
+              console.log("error in fetching the user")
+          });
+      console.log(user.username)   
+      let userProducts = this.cart.map(product => {
+        let dbProduct = new DbProduct();
+        dbProduct.product = product.title;
+        dbProduct.details = product.subtitle;
+        dbProduct.value = product.value;
+        return dbProduct;
+      });
+      console.log(userProducts)
+      this.cartService.order.username = user.username;
+      userProducts.forEach(userProduct => this.cartService.order.orderProducts.push(userProduct));
+      console.log(this.cartService.order);
+      this.cart = [];
+      this.dataSource = new MatTableDataSource<Product>(this.cart);
+      return;
+    }
   }
+  
   removeSelectedRows() {
     if(!this.cart){
       return;
