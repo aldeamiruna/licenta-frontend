@@ -16,6 +16,9 @@ export class CartComponent implements OnInit {
   cart;
   dataSource;
   selection;
+  error = '';
+  loading = false;
+
   constructor(private cartService: CartService, private appComp:AppComponent, private authentication: AuthenticationService) { }
 
   ngOnInit() {
@@ -72,7 +75,6 @@ export class CartComponent implements OnInit {
           error => {
               console.log("error in fetching the user")
           });
-      console.log(user.username)   
       let userProducts = this.cart.map(product => {
         let dbProduct = new DbProduct();
         dbProduct.product = product.title;
@@ -83,11 +85,19 @@ export class CartComponent implements OnInit {
       let userOrder = new DbUserOrder();
       userOrder.username = user.username;
       userProducts.forEach(userProduct => userOrder.orderProducts.push(userProduct));
-      console.log(userOrder);
-      //flushing the data saved in variables to reset the user cart
-      this.cart = [];
-      this.cartService.cart=[];
-      this.dataSource = new MatTableDataSource<Product>(this.cart);
+      this.cartService.saveOrder(userOrder).pipe(first())
+      .subscribe(
+          response => {
+            //on success, flushing the data saved in variables to reset the user cart
+            this.cart = [];
+            this.cartService.cart=[];
+            this.dataSource = new MatTableDataSource<Product>(this.cart);
+          },
+          error => {
+            this.error = "Error while sending your order, please try again :)";
+            this.loading = false;
+          });
+      
       return;
     }
   }

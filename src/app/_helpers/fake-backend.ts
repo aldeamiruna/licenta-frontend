@@ -17,10 +17,11 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         { id: 2, username: 'user', password: 'user', firstName: 'Normal', lastName: 'User', role: Role.User }
     ];
 
-    usersOrders=[
-        {id:1, username:"user", orderProducts:[{position:1,product:"softX", value:20},
-                                        {position:2,product:"softY", value:10}] }
-    ]
+    // usersOrders=[
+    //     {id:1, username:"user", orderProducts:[{position:1,product:"softX", value:20},
+    //                                     {position:2,product:"softY", value:10}] }
+    // ]
+    usersOrders=[]
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const authHeader = request.headers.get('Authorization');
@@ -90,6 +91,16 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 let products = [].concat.apply([], orderProducts);
                 return ok(products);
             }
+
+            if (request.url.endsWith('/save/order') && request.method === 'POST'){
+                let userOrder = request.body;
+                let generatedId = this.orderIdAutoGenerator();
+                userOrder.id = generatedId;
+                // console.log(userOrder)
+                this.usersOrders.push(userOrder)
+                console.log(this.usersOrders)
+                return ok(null);
+            }
                 // pass through any requests not handled above
                 return next.handle(request);
         }))
@@ -110,6 +121,16 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         function error(message) {
             return throwError({ status: 400, error: { message } });
         }
+    }
+
+    orderIdAutoGenerator = () =>{
+        let orderIdGenerated:number;
+        if(this.usersOrders.length == 0){
+            orderIdGenerated = 1;
+            return orderIdGenerated;
+        }
+        orderIdGenerated = this.usersOrders[this.usersOrders.length-1].id + 1;
+        return orderIdGenerated;
     }
 }
 
