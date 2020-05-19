@@ -55,7 +55,31 @@
                 <ng-template #activeDashboard>
                   <img src="../assets/images/dashboard_act.png" class="menu-img">
                 </ng-template>
-                <a routerLink="/shop">Shop</a>
+                <a routerLink="/home">Home</a>
+              </li>
+
+              <li routerLinkActive="active-menu-list-item"><img *ngIf="!dashboardLinkActive;else activeDashboard"
+                src="../assets/images/dashboard.png " class="menu-img">
+                <ng-template #activeDashboard>
+                  <img src="../assets/images/dashboard_act.png" class="menu-img">
+                </ng-template>
+                <a routerLink="/software">Software</a>
+              </li>
+
+              <li routerLinkActive="active-menu-list-item"><img *ngIf="!dashboardLinkActive;else activeDashboard"
+                src="../assets/images/dashboard.png " class="menu-img">
+                <ng-template #activeDashboard>
+                  <img src="../assets/images/dashboard_act.png" class="menu-img">
+                </ng-template>
+                <a routerLink="/courses">Courses</a>
+              </li>
+
+              <li routerLinkActive="active-menu-list-item"><img *ngIf="!dashboardLinkActive;else activeDashboard"
+                src="../assets/images/dashboard.png " class="menu-img">
+                <ng-template #activeDashboard>
+                  <img src="../assets/images/dashboard_act.png" class="menu-img">
+                </ng-template>
+                <a routerLink="/laptop">Laptop</a>
               </li>
 
               <li routerLinkActive="active-menu-list-item" *ngIf="isAdmin"><img *ngIf="!dashboardLinkActive;else activeDashboard"

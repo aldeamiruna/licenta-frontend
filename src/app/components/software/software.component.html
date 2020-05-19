@@ -1,0 +1,25 @@
+<div class="category-content">
+    <div>
+        <p class="category-title">Software-uri</p>
+        <hr class="category-hr">
+        <mat-card *ngFor="let product of shopProducts" class="example-card">
+            <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{product.title}}</mat-card-title>
+            <mat-card-subtitle>{{product.subtitle}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="{{product.img}}">
+            <mat-card-content>
+            <p>
+                {{product.description}}
+            </p>
+            <p>
+                <b>Value: ${{product.value}}</b>
+            </p>
+            </mat-card-content>
+            <mat-card-actions>
+            <button mat-button (click)="addToCart(product)">Add to cart</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

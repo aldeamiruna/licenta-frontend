@@ -8,15 +8,30 @@ import { RoomComponent } from './components/room/room.component'
 import { CategoryComponent } from './components/category/category.component';
 import { AuthGuard } from './_guards';
 import { Role } from './models';
-import { ShopComponent } from './components/shop/shop.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { UserOrderComponent } from './components/user-order/user-order.component';
 import { CartComponent } from './components/cart/cart.component';
+import { CoursesComponent } from './components/courses/courses.component';
+import { SoftwareComponent } from './components/software/software.component';
+import { HomeComponent } from './components/home/home.component';
+import { LaptopComponent } from './components/laptop/laptop.component';
 
 export const routes: Routes = [
     {
-        path: 'shop',
-        component: ShopComponent
+        path: 'home',
+        component: HomeComponent
+    },
+    {
+        path: 'laptop',
+        component: LaptopComponent
+    },
+    {
+        path: 'software',
+        component: SoftwareComponent
+    },
+    {
+        path: 'courses',
+        component: CoursesComponent
     },
     {
         path: 'cart', 
@@ -72,6 +87,6 @@ export const routes: Routes = [
     },
 
     // otherwise redirect to home
-    { path: '**', redirectTo: 'shop' },
+    { path: '**', redirectTo: 'home' },
 
 ]

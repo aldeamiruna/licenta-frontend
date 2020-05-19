@@ -30,15 +30,19 @@ import { EditableTextComponent } from './components/editable-text/editable-text.
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './components/login/login.component';
 import { ReactiveFormsModule }    from '@angular/forms';
+import {HomeComponent} from './components/home/home.component';
 
 // used to create fake backend
 import { JwtInterceptor, ErrorInterceptor, fakeBackendProvider } from './_helpers';
-import { ShopComponent } from './components/shop/shop.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AlertComponent } from './components/alert/alert.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { UserOrderComponent } from './components/user-order/user-order.component';
 import { CartComponent } from './components/cart/cart.component';
+import {CoursesComponent} from './components/courses/courses.component';
+import {SoftwareComponent} from './components/software/software.component';
+import { LaptopComponent } from './components/laptop/laptop.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,12 +65,15 @@ import { CartComponent } from './components/cart/cart.component';
     EditDocComponent,
     EditableTextComponent,
     LoginComponent,
-    ShopComponent,
+    LaptopComponent,
     RegisterComponent,
     AlertComponent,
     OrdersComponent,
     UserOrderComponent,
-    CartComponent
+    CartComponent,
+    CoursesComponent,
+    SoftwareComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

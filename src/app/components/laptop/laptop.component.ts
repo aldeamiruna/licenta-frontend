@@ -3,16 +3,16 @@ import { ShopProductsService } from 'src/app/services/shop-products';
 import { CartService } from 'src/app/services/cart';
 
 @Component({
-  selector: 'app-shop',
-  templateUrl: './shop.component.html',
-  styleUrls: ['./shop.component.css']
+  selector: 'app-laptop',
+  templateUrl: './laptop.component.html',
+  styleUrls: ['./laptop.component.css']
 })
-export class ShopComponent implements OnInit {
+export class LaptopComponent implements OnInit {
   shopProducts;
   constructor(private shopProductsService: ShopProductsService,private cartService: CartService) { }
 
   ngOnInit() {
-    this.shopProducts=this.shopProductsService.coursesProducts;
+    this.shopProducts=this.shopProductsService.laptopProducts;
   }
 
   addToCart(product){
