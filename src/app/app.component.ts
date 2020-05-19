@@ -13,12 +13,6 @@ import { UserAccount, Role } from './models';
 })
 
 export class AppComponent implements OnInit {
-  dashboardLinkActive: boolean = false;
-  inventoryLinkActive: boolean = false;
-  categoryLinkActive: boolean = false;
-  usersLinkActive: boolean = false;
-  buyoutLinkActive: boolean = false;
-  roomLinkActive:boolean = false;
 
   displayDoc: boolean = false;
 

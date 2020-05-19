@@ -35,15 +35,27 @@ export class RegisterComponent implements OnInit {
             firstName: ['', Validators.required],
             lastName: ['', Validators.required],
             username: ['', Validators.required],
-            password: ['', [Validators.required, Validators.minLength(6)]]
-        });
+            email: ['',[Validators.required,Validators.pattern("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$")]],
+            password: ['', [Validators.required, Validators.minLength(6)]],
+            retypePassword: ['',Validators.required]
+        },{ validator: this.checkPasswords });
 
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
 
     // convenience getter for easy access to form fields
-    get f() { return this.registerForm.controls; }
+    get f() { 
+        // console.log(this.registerForm.controls)
+        return this.registerForm.controls; 
+    }
+
+    checkPasswords(group: FormGroup) { // here we have the 'passwords' group
+        let pass = group.get('password').value;
+        let confirmPass = group.get('retypePassword').value;
+
+        return pass === confirmPass ? null : { notSame: true }     
+    }
 
     onSubmit() {
         this.submitted = true;

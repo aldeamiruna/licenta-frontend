@@ -7,3 +7,7 @@
     width: 100%;
   }
   
+.mat-row:hover{
+  cursor:pointer;
+  background-color: #e8e8e8;
+}

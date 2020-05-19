@@ -80,6 +80,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 user.role = Role.User;
                 this.users.push(user)
                 localStorage.setItem('users', JSON.stringify(this.users));
+                console.log(this.users)
                 return ok(user);
             }
 

@@ -21,11 +21,26 @@
         </div>
     </div>
     <div class="field">
+        <label for="email">Email</label>
+        <input type="email" formControlName="email" class="input" [ngClass]="{ 'is-danger': submitted && f.email.errors }"/>
+        <div *ngIf="submitted && f.email.errors" class="help is-danger">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+            <div *ngIf="f.email.errors.pattern">The email is not valid</div>
+        </div>
+    </div>
+    <div class="field">
         <label for="password">Password</label>
         <input type="password" formControlName="password" class="input" [ngClass]="{ 'is-danger': submitted && f.password.errors }" />
         <div *ngIf="submitted && f.password.errors" class="help is-danger">
             <div *ngIf="f.password.errors.required">Password is required</div>
             <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+        </div>
+    </div>
+    <div class="field">
+        <label for="retypePassword">Retype Password</label>
+        <input type="password" formControlName="retypePassword" class="input" [ngClass]="{ 'is-danger': submitted &&  registerForm.hasError('notSame') }" />
+        <div *ngIf="submitted && registerForm.hasError('notSame')" class="help is-danger">
+            <div *ngIf="registerForm.hasError('notSame')">Password doesn't match</div>
         </div>
     </div>
     <div class="field">

@@ -18,13 +18,18 @@ export class CartComponent implements OnInit {
   selection;
   error = '';
   loading = false;
+  
+  
 
   constructor(private cartService: CartService, private appComp:AppComponent, private authentication: AuthenticationService) { }
 
   ngOnInit() {
     this.cart = this.cartService.cart;
     this.dataSource = new MatTableDataSource<Product>(this.cartService.cart);
-    this.selection = new SelectionModel(true, []);
+    // this.selection = new SelectionModel(true, []);
+    const initialSelection = [];
+    const allowMultiSelect = true;
+    this.selection = new SelectionModel<Product>(allowMultiSelect, initialSelection);
   }
   displayedColumns: string[] = ['select', 'position', 'title', 'subtitle', 'value'];
   
@@ -38,7 +43,7 @@ export class CartComponent implements OnInit {
   isAllSelected() {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;
-    return numSelected === numRows;
+    return numSelected == numRows;
   }
 
   /** Selects all rows if they are not all selected; otherwise clear selection. */
@@ -49,7 +54,8 @@ export class CartComponent implements OnInit {
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?): string {
+  checkboxLabel(row): string {
+    console.log(row)
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
