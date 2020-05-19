@@ -24,7 +24,7 @@ export class UserOrderComponent {
 
    ngOnInit(){
     const recordClicked = this.ordersService.recordClicked;
-    this.ordersService.getUserOrder(recordClicked.orderId).pipe(first())
+    this.ordersService.getUserOrder(recordClicked.id).pipe(first())
     .subscribe(
         response => {
             this.order = response;
@@ -32,7 +32,6 @@ export class UserOrderComponent {
         error => {
             console.log("error in fetching the order")
         });
-    // console.log(this.order)
   }
 
   displayedColumns: string[] = ['position', 'product', 'details', 'value'];

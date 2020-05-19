@@ -56,8 +56,7 @@ export class CartComponent implements OnInit {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
   }
 
-  submitOrder(){//TODO: send the cart items to backend if user is logged
-    console.log("cart==>",this.cart)
+  submitOrder(){
     if(this.cart===undefined || this.cart.length==0){
       return;
     }
@@ -84,6 +83,8 @@ export class CartComponent implements OnInit {
       });
       let userOrder = new DbUserOrder();
       userOrder.username = user.username;
+      userOrder.totalProducts = this.cart.length;
+      userOrder.totalOrderValue = this.getTotalCost();
       userProducts.forEach(userProduct => userOrder.orderProducts.push(userProduct));
       this.cartService.saveOrder(userOrder).pipe(first())
       .subscribe(

@@ -10,6 +10,8 @@ export class DbProduct {
 
 export class DbUserOrder {
   username:string;
+  totalProducts:number;
+  totalOrderValue:number;
   orderProducts:DbProduct[]=[];
 }
 

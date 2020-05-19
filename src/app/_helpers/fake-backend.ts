@@ -96,10 +96,12 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 let userOrder = request.body;
                 let generatedId = this.orderIdAutoGenerator();
                 userOrder.id = generatedId;
-                // console.log(userOrder)
                 this.usersOrders.push(userOrder)
-                console.log(this.usersOrders);
                 return ok(null);
+            }
+
+            if (request.url.endsWith('/orders') && request.method === 'GET'){
+                return ok(this.usersOrders);
             }
                 // pass through any requests not handled above
                 return next.handle(request);
