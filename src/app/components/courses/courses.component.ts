@@ -12,7 +12,7 @@ export class CoursesComponent implements OnInit {
   constructor(private shopProductsService: ShopProductsService,private cartService: CartService) { }
 
   ngOnInit() {
-    this.shopProducts=this.shopProductsService.softwareProducts;
+    this.shopProducts=this.shopProductsService.coursesProducts;
   }
 
   addToCart(product){

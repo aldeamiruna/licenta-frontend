@@ -19,7 +19,7 @@ export class UserService {
 
   getAll() {
     return this.httpClient.get<User[]>(`/users`);
-}
+  }
 
   getAllAccount() {
     return this.httpClient.get<UserAccount[]>(`/users`);

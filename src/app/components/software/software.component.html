@@ -4,7 +4,9 @@
         <hr class="category-hr">
         <mat-card *ngFor="let product of shopProducts" class="example-card">
             <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
+            <div mat-card-avatar class="example-header-image">
+                <img src="{{product.logo}}"/>
+            </div>
             <mat-card-title>{{product.title}}</mat-card-title>
             <mat-card-subtitle>{{product.subtitle}}</mat-card-subtitle>
             </mat-card-header>

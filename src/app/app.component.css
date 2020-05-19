@@ -155,7 +155,7 @@ ul li a
   background-color: #fefefe;
   margin: auto;
   border-radius: 20px;
-  width: 40%;
+  width: 30%;
   max-width: 80%;
   overflow-x: auto;
   height: auto;
@@ -172,7 +172,7 @@ ul li a
   overflow-x: auto;
   height: auto;
   max-height: 97%;
-  margin-top: 10%;
+  margin-top: 2%;
 }
 
 #login-size-constraint{
