@@ -98,7 +98,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 userOrder.id = generatedId;
                 // console.log(userOrder)
                 this.usersOrders.push(userOrder)
-                console.log(this.usersOrders)
+                console.log(this.usersOrders);
                 return ok(null);
             }
                 // pass through any requests not handled above

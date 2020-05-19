@@ -35,7 +35,7 @@ export class UserOrderComponent {
     // console.log(this.order)
   }
 
-  displayedColumns: string[] = ['position', 'product', 'value'];
+  displayedColumns: string[] = ['position', 'product', 'details', 'value'];
   products: UserOrderProducts[] = [
       {position: 1, product: 'SoftX', value: 10},
       {position: 2, product: 'SoftY', value: 12},
